@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Platform</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <style>
+        /* [Seluruh CSS dari Template Master Anda tetap tidak berubah] */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            margin: 0;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+        }
+
+        .app-container {
+            width: 350px;
+            border: 4px solid #ff3300;
+            border-radius: 28px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .inner-box {
+            border: 3px solid #ff3300;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .banner-slider {
+            width: 320px;
+            height: 150px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 20px;
+            border: 3px solid #ff3300;
+            overflow: hidden;
+            padding: 0;
+            background-color: #000;
+        }
+
+        .banner-slider .swiper-slide a,
+        .banner-slider .swiper-slide img {
+            width: 320px;
+            height: 150px;
+            display: block;
+        }
+        .banner-slider .swiper-slide img {
+            object-fit: cover;
+        }
+        
+        .running-text {
+            height: 38px;
+            border-radius: 50px;
+            color: #ffff00;
+            font-size: 16px;
+            overflow: hidden;
+            padding: 0;
+        }
+        
+        .running-text span {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: scroll-left 15s linear infinite;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .info-box-placeholder {
+            min-height: 110px;
+            border-radius: 20px;
+            color: #ffffff;
+            font-size: 17px;
+            line-height: 28px;
+            padding: 15px 25px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            white-space: pre;
+        }
+        
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .button-group button {
+            background-color: #000000;
+            color: #ffff00;
+            border: 3px solid #ff3300;
+            border-radius: 12px;
+            height: 40px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        .game-grid-container {
+            border-radius: 20px;
+            padding: 8px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .game-card {
+            aspect-ratio: 1 / 1;
+            border-radius: 14px;
+            color: #ffff00;
+            font-size: 16px;
+            line-height: 20px;
+            padding: 5px;
+        }
+
+        .riwayat-box {
+            height: 60px;
+            border-radius: 20px;
+            color: #ffff00;
+            font-synthesis: 19px;
+            text-transform: uppercase;
+        }
+
+        .halaman {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .halaman.aktif {
+            display: flex;
+        }
+        .form-card {
+            border-radius: 20px;
+            padding: 20px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .form-card h2 {
+            color: #ffff00;
+            font-size: 24px;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .form-card input {
+            background-color: #000000;
+            color: #ffffff;
+            border: 3px solid #ff3300;
+            border-radius: 50px;
+            height: 48px;
+            width: 100%;
+            padding: 0 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+        }
+        .form-card input::placeholder {
+            color: #888888;
+        }
+        .form-card .btn-primary {
+            background-color: #33ff00;
+            color: #ff3300;
+            border: none;
+            border-radius: 14px;
+            height: 52px;
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .form-card .btn-secondary {
+            background-color: #000000;
+            color: #ffff00;
+            border: 3px solid #ff3300;
+            border-radius: 12px;
+            height: 40px;
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <header>
+            <div class="swiper banner-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#url-banner-1"><img src="api/img/slide1.jpg" alt="Banner 1"></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#url-banner-2"><img src="api/img/slide2.jpg" alt="Banner 2"></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#url-banner-3"><img src="api/img/slide3.jpg" alt="Banner 3"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="running-text inner-box">
+                 <span>Ini adalah info teks berjalan yang diisi oleh API... Selamat datang di platform kami!</span>
+            </div>
+        </header>
+        
+        <main>
+            <div id="halaman-utama" class="halaman aktif">
+                <div class="info-box-placeholder inner-box">user     :
+<br>saldo    :
+<br>referral :</div>
+
+                <div class="button-group">
+                    <button id="tombol-ke-masuk">Masuk</button>
+                    <button id="tombol-ke-daftar">Daftar</button>
+                </div>
+
+                <div class="game-grid-container inner-box">
+                    <div class="game-grid">
+                        <div class="game-card inner-box">tumbnail<br>card game<br>1</div>
+                        <div class="game-card inner-box">tumbnail<br>card game<br>2</div>
+                        <div class="game-card inner-box">tumbnail<br>card game<br>3</div>
+                        <div class="game-card inner-box">tumbnail<br>card game<br>6</div>
+                        <div class="game-card inner-box">tumbnail<br>card game<br>5</div>
+                        <div class="game-card inner-box">tumbnail<br>card game<br>4</div>
+                        <div class="game-card inner-box">tumbnail<br>card game<br>7</div>
+                        <div class="game-card inner-box">tumbnail<br>card game<br>8</div>
+                        <div class="game-card inner-box">tumbnail<br>card game<br>9</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="halaman-daftar" class="halaman">
+                 <form class="form-card inner-box">
+                    <h2>Daftar</h2>
+                    <input type="tel" placeholder="nomor ponsel">
+                    <input type="password" placeholder="buat password">
+                    <input type="text" placeholder="kode referral (opsional)">
+                    <button type="submit" class="btn-primary">Daftar</button>
+                    <button type="button" id="tombol-kembali-dari-daftar" class="btn-secondary">Kembali</button>
+                 </form>
+            </div>
+            
+            <!-- ===================================== -->
+            <!-- == BAGIAN HALAMAN MASUK (HALAMAN BARU) == -->
+            <!-- ===================================== -->
+            <div id="halaman-masuk" class="halaman">
+                 <form class="form-card inner-box">
+                    <h2>Masuk</h2>
+                    <input type="tel" placeholder="nomor ponsel">
+                    <input type="password" placeholder="password">
+                    <button type="submit" class="btn-primary">Masuk</button>
+                    <button type="button" id="tombol-kembali-dari-masuk" class="btn-secondary">Kembali</button>
+                 </form>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="riwayat-box inner-box">
+                Riwayat
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Inisialisasi Slider
+        const swiper = new Swiper('.banner-slider', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+
+        // ==== LOGIKA NAVIGASI YANG DIPERBARUI ====
+
+        // Ambil semua elemen navigasi
+        const semuaHalaman = document.querySelectorAll('.halaman');
+        const tombolKeDaftar = document.getElementById('tombol-ke-daftar');
+        const tombolKeMasuk = document.getElementById('tombol-ke-masuk'); // Tombol baru
+        const tombolKembaliDariDaftar = document.getElementById('tombol-kembali-dari-daftar');
+        const tombolKembaliDariMasuk = document.getElementById('tombol-kembali-dari-masuk'); // Tombol baru
+
+        // Fungsi untuk menampilkan halaman yang diminta
+        function tampilkanHalaman(idHalaman) {
+            semuaHalaman.forEach(halaman => {
+                halaman.classList.remove('aktif');
+            });
+            const halamanTujuan = document.getElementById(idHalaman);
+            if(halamanTujuan) {
+                halamanTujuan.classList.add('aktif');
+            }
+        }
+
+        // Fungsi untuk kembali ke halaman utama
+        function kembaliKeUtama() {
+            tampilkanHalaman('halaman-utama');
+        }
+
+        // --- Event listener untuk navigasi dari Halaman Utama ---
+        tombolKeDaftar.addEventListener('click', function() {
+            tampilkanHalaman('halaman-daftar');
+        });
+        
+        tombolKeMasuk.addEventListener('click', function() {
+            tampilkanHalaman('halaman-masuk');
+        });
+        
+        // --- Event listener untuk tombol kembali ---
+        tombolKembaliDariDaftar.addEventListener('click', kembaliKeUtama);
+        tombolKembaliDariMasuk.addEventListener('click', kembaliKeUtama);
+
+    </script>
+</body>
+</html>
